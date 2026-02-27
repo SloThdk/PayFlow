@@ -75,8 +75,8 @@ export default function ProductPage() {
           letterSpacing: "0.02em",
         }}
       >
-        Dette er en demo af et Sloth Studio checkout-flow til potentielle kunder.
-        Ingen rigtige betalinger behandles.
+        Dette design kan tilpasses fuldt ud til dit brand og din identitet — farver, logo og typografi matcher dit website.
+        Dette viser blot, hvordan et betalingsflow ville se ud på din side. Ingen rigtige betalinger behandles.
       </div>
 
       {/* Header */}
@@ -298,11 +298,36 @@ export default function ProductPage() {
             </div>
           </div>
         </div>
+
+        {/* Brand customization note */}
+        <div
+          style={{
+            background: "rgba(99,91,255,0.06)",
+            border: "1px solid rgba(99,91,255,0.18)",
+            borderRadius: "12px",
+            padding: "20px 24px",
+            marginTop: "16px",
+            textAlign: "center",
+          }}
+        >
+          <p
+            style={{
+              fontSize: "13px",
+              color: "rgba(250,250,250,0.5)",
+              lineHeight: 1.6,
+              margin: 0,
+            }}
+          >
+            This design is fully customizable to your brand and identity.
+            Colors, logo, fonts, and layout can all be matched to your site.
+            This is just one example of how a payment flow would look on your site.
+          </p>
+        </div>
       </main>
 
       {/* Floating attribution */}
       <a
-        href="https://slothstudio.dk"
+        href="https://sloth-studio.pages.dev"
         target="_blank"
         rel="noopener noreferrer"
         style={{
