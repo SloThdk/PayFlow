@@ -50,17 +50,7 @@ function VisaLogo() {
 }
 
 function MastercardLogo() {
-  return (
-    <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
-      <rect width="36" height="24" rx="4" fill="#252525" />
-      <circle cx="14" cy="12" r="6" fill="#EB001B" />
-      <circle cx="22" cy="12" r="6" fill="#F79E1B" />
-      <path
-        d="M18 7.5A6 6 0 0122 12a6 6 0 01-4 4.5A6 6 0 0114 12a6 6 0 014-4.5z"
-        fill="#FF5F00"
-      />
-    </svg>
-  );
+  return <img src="/icons/MasterCard.png" alt="Mastercard" style={{ height: '24px', width: 'auto', display: 'block' }} />;
 }
 
 function InfoIcon() {
