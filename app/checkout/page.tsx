@@ -165,24 +165,24 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
 
   function validate(): boolean {
     const errs: Record<string, string> = {};
-    if (!name.trim()) errs.name = "Navn er paakraevet";
+    if (!name.trim()) errs.name = "Navn er påkrævet";
     const rawCard = cardNum.replace(/\s/g, "");
     if (rawCard.length < 13) errs.card = "Ugyldigt kortnummer";
     else if (!luhn(rawCard)) errs.card = "Kortnummeret er ugyldigt";
 
     const [mm, yy] = expiry.split("/");
     if (!mm || !yy || mm.length < 2 || yy.length < 2) {
-      errs.expiry = "Ugyldigt udloebsdato";
+      errs.expiry = "Ugyldig udløbsdato";
     } else {
       const month = parseInt(mm, 10);
       const year = 2000 + parseInt(yy, 10);
       const now = new Date();
-      if (month < 1 || month > 12) errs.expiry = "Ugyldig maaned";
+      if (month < 1 || month > 12) errs.expiry = "Ugyldig måned";
       else if (
         year < now.getFullYear() ||
         (year === now.getFullYear() && month < now.getMonth() + 1)
       )
-        errs.expiry = "Kortet er udloebet";
+        errs.expiry = "Kortet er udløbet";
     }
     if (cvc.length < 3) errs.cvc = "Ugyldig CVC";
     setErrors(errs);
@@ -252,12 +252,12 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
       {/* Expiry + CVC */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
         <div>
-          <label style={labelStyle()}>Udloebsdato</label>
+          <label style={labelStyle()}>Udløbsdato</label>
           <input
             style={inputStyle(!!errors.expiry)}
             type="text"
             inputMode="numeric"
-            placeholder="MM/AA"
+            placeholder="MM/ÅÅ"
             value={expiry}
             onChange={(e) => setExpiry(formatExpiry(e.target.value))}
             autoComplete="cc-exp"
@@ -321,7 +321,7 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
         }}
       >
         <LockIcon />
-        Demo – ingen rigtig betaling gennemfoeres
+        Demo – ingen rigtig betaling gennemføres
       </div>
     </div>
   );
@@ -413,7 +413,7 @@ function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
             color: C.textSec,
           }}
         >
-          Du modtager en anmodning i MobilePay-appen. Godkend den for at fuldfoere betaling.
+          Du modtager en anmodning i MobilePay-appen. Godkend den for at fuldføre betaling.
         </div>
 
         <button
@@ -451,7 +451,7 @@ function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
           }}
         >
           <LockIcon />
-          Demo – ingen rigtig betaling gennemfoeres
+          Demo – ingen rigtig betaling gennemføres
         </div>
       </div>
     </div>
@@ -491,7 +491,7 @@ function ApplePayTab() {
           <img src="/icons/ApplePay.png" alt="Apple Pay" style={{ height: '28px', width: 'auto' }} />
         </button>
         <p style={{ fontSize: "13px", color: C.textSec, margin: 0 }}>
-          Kun tilgaengelig paa Apple-enheder
+          Kun tilgængelig på Apple-enheder
         </p>
       </div>
     </div>
@@ -531,7 +531,7 @@ function GooglePayTab() {
           <img src="/icons/GooglePay.png" alt="Google Pay" style={{ height: '28px', width: 'auto' }} />
         </button>
         <p style={{ fontSize: "13px", color: C.textSec, margin: 0 }}>
-          Demo – ikke tilgaengelig i dette miljoe
+          Demo – ikke tilgængelig i dette miljø
         </p>
       </div>
     </div>

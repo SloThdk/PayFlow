@@ -278,7 +278,7 @@ export default function ProductPage() {
                 ((e.target as HTMLElement).style.opacity = "1")
               }
             >
-              Koeb nu
+              Køb nu
             </Link>
 
             {/* Security note */}

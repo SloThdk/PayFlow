@@ -22,7 +22,7 @@ const C = {
 const steps = [
   {
     num: "01",
-    text: "Du modtager en bekraeftelse paa e-mail",
+    text: "Du modtager en bekræftelse på e-mail",
   },
   {
     num: "02",
@@ -135,7 +135,7 @@ function SuccessContent() {
               color: C.text,
             }}
           >
-            Betaling gennemfoert!
+            Betaling gennemført!
           </h1>
 
           {/* Sub */}
