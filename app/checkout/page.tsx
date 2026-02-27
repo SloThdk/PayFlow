@@ -46,15 +46,7 @@ function detectCard(num: string): "visa" | "mc" | null {
 }
 
 function VisaLogo() {
-  return (
-    <svg width="36" height="24" viewBox="0 0 36 24" fill="none">
-      <rect width="36" height="24" rx="4" fill="#1A1F71" />
-      <path
-        d="M14.5 17H12l-2-7h2.3l1.2 5 1.3-5H17L14.5 17zm4 0h-2.2l2.2-7h2.2L18.5 17zm6.5-7l-.5 1.5s-.5-.8-1.3-.8c-.7 0-1 .4-1 .8 0 .5.6.7 1.4 1.2 1 .6 1.5 1.2 1.5 2.1 0 1.4-1.2 2.3-2.9 2.3-1.1 0-2-.5-2-.5l.4-1.6s.8.7 1.8.7c.6 0 1-.3 1-.7 0-.5-.5-.7-1.3-1.2-1-.6-1.5-1.3-1.5-2.1 0-1.3 1.1-2.2 2.8-2.2.9 0 1.7.4 1.7.4L25 10z"
-        fill="white"
-      />
-    </svg>
-  );
+  return <img src="/icons/Visa.png" alt="Visa" style={{ height: '24px', width: 'auto', display: 'block' }} />;
 }
 
 function MastercardLogo() {
@@ -373,26 +365,8 @@ function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
         }}
       >
         {/* MobilePay logo */}
-        <div style={{ marginBottom: "10px" }}>
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <rect width="48" height="48" rx="12" fill="rgba(255,255,255,0.15)" />
-            <rect x="14" y="8" width="20" height="32" rx="4" stroke="white" strokeWidth="2" fill="none" />
-            <rect x="17" y="11" width="14" height="20" rx="2" fill="rgba(255,255,255,0.2)" />
-            <path d="M20 35h8" stroke="white" strokeWidth="2" strokeLinecap="round" />
-            <path d="M24 18l-3 4h6l-3 4" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </div>
-        <div
-          style={{
-            fontSize: "22px",
-            fontWeight: 700,
-            color: "#fff",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          MobilePay
-        </div>
-        <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)", marginTop: "4px" }}>
+        <img src="/icons/MobilePay.png" alt="MobilePay" style={{ height: '64px', width: 'auto', marginBottom: '8px' }} />
+        <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)" }}>
           Betal med MobilePay
         </div>
       </div>
@@ -514,10 +488,7 @@ function ApplePayTab() {
             fontFamily: "inherit",
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path d="M13.5 2.5c.5-1 1.5-1.7 2.5-1.7-.1 1.1-.6 2.1-1.2 2.8-.6.7-1.5 1.2-2.4 1.1-.1-1 .5-2.1 1.1-2.2zM10.2 5c1-.1 2 .4 2.7 1.1-.7.5-1.8 1.4-1.8 3 0 2 1.8 2.8 1.8 2.8s-1.2 4-3 4c-.8 0-1.1-.5-2-.5-.9 0-1.3.5-2 .5-1.7-.1-3.2-4-3.2-4S1 10.5 1 8.5C1 6 2.7 4.7 4.3 4.7c.9 0 1.7.5 2.3.5.5 0 1.5-.7 2.6-.7.3.1.7.2 1 .5z" fill="white" />
-          </svg>
-          Pay
+          <img src="/icons/ApplePay.png" alt="Apple Pay" style={{ height: '28px', width: 'auto' }} />
         </button>
         <p style={{ fontSize: "13px", color: C.textSec, margin: 0 }}>
           Kun tilgaengelig paa Apple-enheder
@@ -557,10 +528,7 @@ function GooglePayTab() {
             fontFamily: "inherit",
           }}
         >
-          <svg width="20" height="20" viewBox="0 0 20 20">
-            <path fill="#4285F4" d="M10 8.182v3.636h5.09c-.22 1.273-1.636 3.727-5.09 3.727-3.063 0-5.563-2.527-5.563-5.545s2.5-5.545 5.563-5.545c1.745 0 2.909.745 3.572 1.39l2.436-2.354C14.32 2.09 12.31 1.09 10 1.09 5.09 1.09 1.09 5.09 1.09 10s4 8.91 8.91 8.91c5.136 0 8.545-3.617 8.545-8.71 0-.582-.063-1.027-.145-1.472L10 8.182z" />
-          </svg>
-          Google Pay
+          <img src="/icons/GooglePay.png" alt="Google Pay" style={{ height: '28px', width: 'auto' }} />
         </button>
         <p style={{ fontSize: "13px", color: C.textSec, margin: 0 }}>
           Demo – ikke tilgaengelig i dette miljoe
@@ -583,11 +551,11 @@ export default function CheckoutPage() {
     router.push("/success?method=mobilepay");
   }
 
-  const tabs: { key: Tab; label: string }[] = [
+  const tabs: { key: Tab; label: string; icon?: string }[] = [
     { key: "kort", label: "Kort" },
-    { key: "mobilepay", label: "MobilePay" },
-    { key: "applepay", label: "Apple Pay" },
-    { key: "googlepay", label: "Google Pay" },
+    { key: "mobilepay", label: "MobilePay", icon: "/icons/MobilePay.png" },
+    { key: "applepay", label: "Apple Pay", icon: "/icons/ApplePay.png" },
+    { key: "googlepay", label: "Google Pay", icon: "/icons/GooglePay.png" },
   ];
 
   return (
@@ -622,9 +590,8 @@ export default function CheckoutPage() {
           >
             PayFlow
           </a>
-          <div style={{ display: "flex", alignItems: "center", gap: "6px", fontSize: "12px", color: C.textMuted }}>
-            <LockIcon />
-            Sikker betaling
+          <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <img src="/icons/SSL_SECURED.png" alt="SSL Secured" style={{ height: '22px', width: 'auto' }} />
           </div>
         </header>
 
@@ -800,7 +767,9 @@ export default function CheckoutPage() {
                       transition: "all 0.15s",
                     }}
                   >
-                    {t.label}
+                    {t.icon
+                        ? <img src={t.icon} alt={t.label} style={{ height: '18px', width: 'auto', display: 'block', margin: '0 auto' }} />
+                        : t.label}
                   </button>
                 ))}
               </div>

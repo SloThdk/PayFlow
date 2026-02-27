@@ -291,10 +291,12 @@ export default function ProductPage() {
                 marginTop: "16px",
               }}
             >
-              <LockIcon />
-              <span style={{ fontSize: "12px", color: C.textMuted }}>
-                Sikker betaling via Stripe og MobilePay
-              </span>
+              <img src="/icons/SSL_SECURED.png" alt="SSL Secured" style={{ height: '22px', width: 'auto' }} />
+              <span style={{ fontSize: "11px", color: C.textMuted, marginLeft: "4px" }}>Sikker betaling</span>
+              <div style={{ marginLeft: "auto", display: "flex", gap: "6px", alignItems: "center" }}>
+                <img src="/icons/Stripe.png" alt="Stripe" style={{ height: '18px', width: 'auto', opacity: 0.7 }} />
+                <img src="/icons/MobilePay.png" alt="MobilePay" style={{ height: '18px', width: 'auto', opacity: 0.7 }} />
+              </div>
             </div>
           </div>
         </div>
