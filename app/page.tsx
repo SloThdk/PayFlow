@@ -62,7 +62,7 @@ const features = [
 
 export default function ProductPage() {
   return (
-    <div style={{ minHeight: "100vh", background: C.bg }}>
+    <div style={{ minHeight: "100vh", background: C.bg, overflowX: "hidden" }}>
       {/* Demo banner */}
       <div
         style={{

@@ -1,0 +1,16 @@
+/* PayFlow - Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+/* ── Mobile responsive base ── */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* ── Responsive helpers ── */
+@media (max-width: 768px) {
+  .responsive-grid { grid-template-columns: 1fr !important; }
+  .responsive-grid-2 { grid-template-columns: 1fr !important; }
+}
