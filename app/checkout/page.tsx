@@ -451,9 +451,9 @@ function ApplePayTab() {
   return (
     <div style={{ textAlign: "center", padding: "24px 0" }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-        <button disabled style={{ background: "#000", color: "#fff", border: "none", borderRadius: "12px", padding: "18px 48px", cursor: "not-allowed", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.85 }}>
-          <img src="/icons/ApplePay.png" alt="Apple Pay" style={{ height: "32px", width: "auto" }} />
-        </button>
+        <div style={{ background: "#000", borderRadius: "14px", padding: "24px 56px", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.9 }}>
+          <img src="/icons/ApplePay.png" alt="Apple Pay" style={{ height: "52px", width: "auto", filter: "brightness(10)" }} />
+        </div>
         <div style={{ background: "rgba(99,91,255,0.06)", border: "1px solid rgba(99,91,255,0.15)", borderRadius: "10px", padding: "14px 20px", maxWidth: "360px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", marginBottom: "6px" }}>
             <span style={{ background: C.accentDim, color: C.accent, fontSize: "9px", fontWeight: 700, padding: "2px 8px", borderRadius: "100px", letterSpacing: "0.06em" }}>DEMO</span>
@@ -471,9 +471,9 @@ function GooglePayTab() {
   return (
     <div style={{ textAlign: "center", padding: "24px 0" }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-        <button disabled style={{ background: "#fff", border: "1px solid #dadce0", borderRadius: "12px", padding: "18px 48px", cursor: "not-allowed", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.85 }}>
-          <img src="/icons/GooglePay.png" alt="Google Pay" style={{ height: "32px", width: "auto" }} />
-        </button>
+        <div style={{ background: "#fff", border: "1px solid #dadce0", borderRadius: "14px", padding: "24px 56px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <img src="/icons/GooglePay.png" alt="Google Pay" style={{ height: "52px", width: "auto" }} />
+        </div>
         <div style={{ background: "rgba(99,91,255,0.06)", border: "1px solid rgba(99,91,255,0.15)", borderRadius: "10px", padding: "14px 20px", maxWidth: "360px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", marginBottom: "6px" }}>
             <span style={{ background: C.accentDim, color: C.accent, fontSize: "9px", fontWeight: 700, padding: "2px 8px", borderRadius: "100px", letterSpacing: "0.06em" }}>DEMO</span>
@@ -720,7 +720,7 @@ export default function CheckoutPage() {
                       transition: "all 0.15s",
                     }}
                   >
-                    {t.img ? <img src={t.img} alt={t.label} style={{ height: "20px", width: "auto", display: "block", margin: "0 auto" }} /> : t.label}
+                    {t.img ? <img src={t.img} alt={t.label} style={{ height: "28px", width: "auto", display: "block", margin: "0 auto" }} /> : t.label}
                   </button>
                 ))}
               </div>
