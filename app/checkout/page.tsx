@@ -740,6 +740,16 @@ export default function CheckoutPage() {
           }
         `}</style>
 
+        {/* Your Design callout */}
+        <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 24px 80px", textAlign: "center" }}>
+          <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: "48px" }}>
+            <h2 style={{ fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 800, letterSpacing: "-0.03em", color: C.text, marginBottom: "12px" }}>Your Design</h2>
+            <p style={{ fontSize: "15px", color: C.textSec, maxWidth: "520px", margin: "0 auto", lineHeight: 1.7 }}>
+              This is a demo of how a payment flow looks when built from scratch. Every color, font, layout, and interaction is fully customizable to match your brand identity. No templates. No platform limitations. Just your design.
+            </p>
+          </div>
+        </div>
+
         {/* Floating attribution */}
         <a
           href="https://sloth-studio.pages.dev"
