@@ -18,7 +18,7 @@ const C = {
   red: "#EF4444",
 };
 
-type Tab = "kort" | "applepay" | "googlepay";
+type Tab = "kort" | "klarna" | "applepay" | "googlepay";
 
 // --- Luhn algorithm ---
 function luhn(num: string): boolean {
@@ -316,24 +316,16 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
   );
 }
 
-// --- MobilePay tab ---
-function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
-  const [phone, setPhone] = useState("");
+// --- Klarna tab ---
+function KlarnaTab({ onSuccess }: { onSuccess: () => void }) {
+  const [email, setEmail] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState("");
-
-  function formatPhone(val: string) {
-    const raw = val.replace(/\D/g, "").slice(0, 8);
-    if (raw.length <= 2) return raw;
-    if (raw.length <= 4) return raw.slice(0, 2) + " " + raw.slice(2);
-    if (raw.length <= 6) return raw.slice(0, 2) + " " + raw.slice(2, 4) + " " + raw.slice(4);
-    return raw.slice(0, 2) + " " + raw.slice(2, 4) + " " + raw.slice(4, 6) + " " + raw.slice(6);
-  }
+  const [option, setOption] = useState<'now' | 'later' | 'installments'>('now');
 
   function handleSubmit() {
-    const raw = phone.replace(/\s/g, "");
-    if (raw.length < 8) {
-      setErr("Indtast et gyldigt mobilnummer");
+    if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setErr("Indtast en gyldig e-mailadresse");
       return;
     }
     setErr("");
@@ -341,105 +333,47 @@ function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
     setTimeout(() => onSuccess(), 2000);
   }
 
+  const options = [
+    { key: 'now' as const, label: 'Pay now', desc: 'Betal med det samme via Klarna' },
+    { key: 'later' as const, label: 'Pay later', desc: 'Betal inden for 30 dage' },
+    { key: 'installments' as const, label: '3 installments', desc: 'Del betalingen i 3 rater' },
+  ];
+
   return (
     <div>
-      {/* MobilePay branding */}
-      <div
-        style={{
-          background: "#5A78FF",
-          borderRadius: "12px",
-          padding: "28px 24px",
-          marginBottom: "24px",
-          textAlign: "center",
-        }}
-      >
-        {/* MobilePay logo */}
-        <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)" }}>
-          Betal med MobilePay
-        </div>
+      {/* Klarna branding */}
+      <div style={{ background: '#FFB3C7', borderRadius: '12px', padding: '20px 24px', marginBottom: '24px', textAlign: 'center' }}>
+        <img src="/icons/KlarnaLogo.png" alt="Klarna" style={{ height: '32px', width: 'auto' }} />
       </div>
 
-      <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-        <div>
-          <label style={labelStyle()}>Dit mobilnummer</label>
-          <div style={{ position: "relative" }}>
-            <div
-              style={{
-                position: "absolute",
-                left: "14px",
-                top: "50%",
-                transform: "translateY(-50%)",
-                fontSize: "15px",
-                color: C.textSec,
-                pointerEvents: "none",
-              }}
-            >
-              +45
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        {/* Payment options */}
+        {options.map(o => (
+          <button key={o.key} onClick={() => setOption(o.key)}
+            style={{ background: option === o.key ? 'rgba(99,91,255,0.08)' : C.surface2, border: option === o.key ? `2px solid ${C.accent}` : `1px solid ${C.border}`, borderRadius: '10px', padding: '14px 16px', textAlign: 'left', display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }}>
+            <div style={{ width: '18px', height: '18px', borderRadius: '50%', border: option === o.key ? `5px solid ${C.accent}` : `2px solid ${C.borderStrong}`, flexShrink: 0 }} />
+            <div>
+              <div style={{ fontWeight: 600, fontSize: '14px', color: C.text }}>{o.label}</div>
+              <div style={{ fontSize: '12px', color: C.textSec }}>{o.desc}</div>
             </div>
-            <input
-              style={{ ...inputStyle(!!err), paddingLeft: "46px" }}
-              type="tel"
-              inputMode="numeric"
-              placeholder="XX XX XX XX"
-              value={phone}
-              onChange={(e) => {
-                setPhone(formatPhone(e.target.value));
-                setErr("");
-              }}
-            />
-          </div>
+          </button>
+        ))}
+
+        <div style={{ marginTop: '4px' }}>
+          <label style={labelStyle()}>E-mail</label>
+          <input style={inputStyle(!!err)} type="email" placeholder="din@email.dk" value={email}
+            onChange={e => { setEmail(e.target.value); setErr(''); }} />
           {err && errorMsg(err)}
         </div>
 
-        <div
-          style={{
-            background: C.surface2,
-            border: `1px solid ${C.border}`,
-            borderRadius: "8px",
-            padding: "12px 14px",
-            fontSize: "13px",
-            color: C.textSec,
-          }}
-        >
-          Du modtager en anmodning i MobilePay-appen. Godkend den for at fuldføre betaling.
-        </div>
-
-        <button
-          onClick={handleSubmit}
-          disabled={loading}
-          style={{
-            background: loading ? "rgba(90,120,255,0.7)" : "#5A78FF",
-            color: "#fff",
-            border: "none",
-            borderRadius: "10px",
-            padding: "14px",
-            fontSize: "15px",
-            fontWeight: 600,
-            cursor: loading ? "not-allowed" : "pointer",
-            width: "100%",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontFamily: "inherit",
-            letterSpacing: "-0.01em",
-          }}
-        >
+        <button onClick={handleSubmit} disabled={loading}
+          style={{ background: loading ? 'rgba(99,91,255,0.7)' : C.accent, color: '#fff', border: 'none', borderRadius: '10px', padding: '14px', fontSize: '15px', fontWeight: 600, cursor: loading ? 'not-allowed' : 'pointer', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: 'inherit', letterSpacing: '-0.01em' }}>
           {loading && <Spinner />}
-          {loading ? "Sender anmodning..." : "Send betalingsanmodning"}
+          {loading ? 'Behandler...' : `Betal med Klarna – $186.25`}
         </button>
 
-        <div
-          style={{
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            gap: "6px",
-            fontSize: "12px",
-            color: C.textMuted,
-          }}
-        >
-          <LockIcon />
-          Demo – ingen rigtig betaling gennemføres
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '6px', fontSize: '12px', color: C.textMuted }}>
+          <LockIcon /> Demo – ingen rigtig betaling gennemføres
         </div>
       </div>
     </div>
@@ -496,6 +430,7 @@ export default function CheckoutPage() {
   }
   const tabs: { key: Tab; label: string; img?: string }[] = [
     { key: "kort", label: "Card" },
+    { key: "klarna", label: "Klarna", img: "/icons/KlarnaLogo.png" },
     { key: "applepay", label: "Apple Pay", img: "/icons/ApplePay.png" },
     { key: "googlepay", label: "Google Pay", img: "/icons/GooglePay.png" },
   ];
@@ -727,6 +662,7 @@ export default function CheckoutPage() {
 
               {/* Tab content */}
               {tab === "kort" && <KortForm onSuccess={handleCardSuccess} />}
+              {tab === "klarna" && <KlarnaTab onSuccess={() => router.push("/success?method=klarna")} />}
               {tab === "applepay" && <ApplePayTab />}
               {tab === "googlepay" && <GooglePayTab />}
             </div>
