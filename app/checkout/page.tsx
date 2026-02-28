@@ -451,8 +451,8 @@ function ApplePayTab() {
   return (
     <div style={{ textAlign: "center", padding: "24px 0" }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-        <button disabled style={{ background: "#000", color: "#fff", border: "none", borderRadius: "12px", padding: "18px 48px", fontSize: "15px", fontWeight: 600, cursor: "not-allowed", display: "flex", alignItems: "center", gap: "10px", fontFamily: "inherit", opacity: 0.85 }}>
-          <svg width="50" height="22" viewBox="0 0 50 22" fill="none"><path d="M9.4 3.7c-.6.7-1.5 1.3-2.5 1.2-.1-1 .4-2 .9-2.7C8.4 1.5 9.5.9 10.4.8c.1 1-.3 2-.9 2.7L9.4 3.7zm.9 1.4c-1.4-.1-2.6.8-3.2.8-.7 0-1.7-.7-2.8-.7C2.9 5.2 1.5 6 .8 7.4c-1.5 2.7-.4 6.6 1.1 8.8.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.7.7 2.8.7 1.2 0 2-1 2.8-2.1.9-1.2 1.2-2.4 1.2-2.5 0 0-2.4-1-2.4-3.8 0-2.3 1.9-3.5 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8h-.1zM20.4 2c3.8 0 6.4 2.6 6.4 6.4 0 3.9-2.7 6.5-6.5 6.5h-4.2v6.7h-3V2h7.3zm-4.3 10.3h3.5c2.6 0 4.1-1.4 4.1-3.9s-1.5-3.9-4.1-3.9h-3.5v7.8zm12.2 3.5c0-2.5 1.9-4.1 5.4-4.2l4-.2v-1.1c0-1.6-1.1-2.6-2.8-2.6-1.7 0-2.8.9-3 2.2h-2.7c.1-2.7 2.3-4.7 5.8-4.7 3.4 0 5.6 1.8 5.6 4.6v9.8h-2.8v-2.4h-.1c-.8 1.6-2.6 2.7-4.5 2.7-2.8 0-4.8-1.8-4.8-4.2l-.1.1zm9.5-1.3v-1.2l-3.6.2c-1.8.1-2.8.9-2.8 2.2 0 1.3 1.1 2.1 2.7 2.1 2.1 0 3.7-1.5 3.7-3.3zm5 8.6v-2.3c.2 0 .7.1 1 .1 1.4 0 2.2-.6 2.7-2.1l.3-.9-5.2-14.4h3.1l3.7 11.9h.1l3.7-11.9h3L46 20.7c-1.2 3.3-2.5 4.4-5.4 4.4-.3 0-.9 0-1.2-.1h.4z" fill="white"/></svg>
+        <button disabled style={{ background: "#000", color: "#fff", border: "none", borderRadius: "12px", padding: "18px 48px", cursor: "not-allowed", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.85 }}>
+          <img src="/icons/ApplePay.png" alt="Apple Pay" style={{ height: "32px", width: "auto" }} />
         </button>
         <div style={{ background: "rgba(99,91,255,0.06)", border: "1px solid rgba(99,91,255,0.15)", borderRadius: "10px", padding: "14px 20px", maxWidth: "360px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", marginBottom: "6px" }}>
@@ -471,8 +471,8 @@ function GooglePayTab() {
   return (
     <div style={{ textAlign: "center", padding: "24px 0" }}>
       <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
-        <button disabled style={{ background: "#fff", color: "#3c4043", border: "1px solid #dadce0", borderRadius: "12px", padding: "18px 48px", fontSize: "15px", fontWeight: 600, cursor: "not-allowed", display: "flex", alignItems: "center", gap: "10px", fontFamily: "inherit", opacity: 0.85 }}>
-          <svg width="60" height="24" viewBox="0 0 120 48" fill="none"><path d="M57.2 24.6V37h-3.2V12.8h8.5c2.1 0 3.9.7 5.4 2.1 1.5 1.4 2.3 3.1 2.3 5.1 0 2.1-.8 3.8-2.3 5.2-1.4 1.4-3.2 2-5.4 2h-5.3v-2.6zm0-9.2v6.5h5.4c1.2 0 2.3-.4 3.1-1.3.9-.9 1.3-1.9 1.3-3.1 0-1.1-.4-2.1-1.3-2.9-.8-.9-1.9-1.3-3.1-1.3h-5.4v.1z" fill="#4285F4"/><path d="M76.5 19.9c2.4 0 4.2.6 5.6 1.9 1.4 1.3 2.1 3.1 2.1 5.3V37h-3.1v-2.2h-.1c-1.3 1.8-3 2.7-5.2 2.7-1.8 0-3.4-.5-4.6-1.6-1.2-1.1-1.8-2.5-1.8-4.1 0-1.8.7-3.2 2-4.2 1.3-1 3.1-1.5 5.3-1.5 1.9 0 3.5.3 4.6 1v-.7c0-1.2-.5-2.3-1.4-3.1-1-.9-2.1-1.3-3.3-1.3-1.9 0-3.4.8-4.5 2.4l-2.8-1.8c1.6-2.3 3.9-3.5 7.1-3.5l.1-.2zm-4 12c0 .9.4 1.7 1.1 2.3.7.6 1.6.9 2.6.9 1.4 0 2.7-.5 3.7-1.6 1.1-1.1 1.7-2.3 1.7-3.8-1-.8-2.4-1.1-4.2-1.1-1.3 0-2.4.3-3.2.9-.9.6-1.4 1.4-1.4 2.4h-.3zm17.9 8.2l-6.6-16.8h3.4l4.7 12.7h.1l4.6-12.7h3.3L93 43.5h-3.3l2.7-6.5v3.1z" fill="#4285F4"/><path d="M39.5 24.5c0-1.2-.1-2.3-.3-3.4H20.3v6.4h10.8c-.5 2.5-1.9 4.6-4 6v5h6.5c3.8-3.5 5.9-8.6 5.9-14z" fill="#4285F4"/><path d="M20.3 42c5.4 0 9.9-1.8 13.2-4.8l-6.5-5c-1.8 1.2-4.1 1.9-6.8 1.9-5.2 0-9.6-3.5-11.2-8.2H2.3v5.2C5.7 37.8 12.5 42 20.3 42z" fill="#34A853"/><path d="M9.1 25.8c-.4-1.2-.6-2.5-.6-3.8 0-1.3.2-2.6.6-3.8v-5.2H2.3C.8 15.4 0 18.1 0 21s.8 5.6 2.3 8l6.8-5.2z" fill="#FBBC05"/><path d="M20.3 9c2.9 0 5.6 1 7.6 3l5.7-5.7C30.2 3 25.7.8 20.3.8 12.5.8 5.7 5 2.3 11.6l6.8 5.2c1.5-4.7 6-8.2 11.2-8.2v.4z" fill="#EA4335"/></svg>
+        <button disabled style={{ background: "#fff", border: "1px solid #dadce0", borderRadius: "12px", padding: "18px 48px", cursor: "not-allowed", display: "flex", alignItems: "center", justifyContent: "center", opacity: 0.85 }}>
+          <img src="/icons/GooglePay.png" alt="Google Pay" style={{ height: "32px", width: "auto" }} />
         </button>
         <div style={{ background: "rgba(99,91,255,0.06)", border: "1px solid rgba(99,91,255,0.15)", borderRadius: "10px", padding: "14px 20px", maxWidth: "360px" }}>
           <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", marginBottom: "6px" }}>
@@ -494,10 +494,10 @@ export default function CheckoutPage() {
   function handleCardSuccess() {
     router.push("/success?method=card");
   }
-  const tabs: { key: Tab; label: string; svg?: React.ReactNode }[] = [
+  const tabs: { key: Tab; label: string; img?: string }[] = [
     { key: "kort", label: "Card" },
-    { key: "applepay", label: "Apple Pay", svg: <svg width="36" height="14" viewBox="0 0 50 22" fill="none"><path d="M9.4 3.7c-.6.7-1.5 1.3-2.5 1.2-.1-1 .4-2 .9-2.7C8.4 1.5 9.5.9 10.4.8c.1 1-.3 2-.9 2.7L9.4 3.7zm.9 1.4c-1.4-.1-2.6.8-3.2.8-.7 0-1.7-.7-2.8-.7C2.9 5.2 1.5 6 .8 7.4c-1.5 2.7-.4 6.6 1.1 8.8.7 1.1 1.6 2.3 2.8 2.2 1.1 0 1.5-.7 2.8-.7 1.3 0 1.7.7 2.8.7 1.2 0 2-1 2.8-2.1.9-1.2 1.2-2.4 1.2-2.5 0 0-2.4-1-2.4-3.8 0-2.3 1.9-3.5 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8h-.1zM20.4 2c3.8 0 6.4 2.6 6.4 6.4 0 3.9-2.7 6.5-6.5 6.5h-4.2v6.7h-3V2h7.3zm-4.3 10.3h3.5c2.6 0 4.1-1.4 4.1-3.9s-1.5-3.9-4.1-3.9h-3.5v7.8zm12.2 3.5c0-2.5 1.9-4.1 5.4-4.2l4-.2v-1.1c0-1.6-1.1-2.6-2.8-2.6-1.7 0-2.8.9-3 2.2h-2.7c.1-2.7 2.3-4.7 5.8-4.7 3.4 0 5.6 1.8 5.6 4.6v9.8h-2.8v-2.4h-.1c-.8 1.6-2.6 2.7-4.5 2.7-2.8 0-4.8-1.8-4.8-4.2l-.1.1zm9.5-1.3v-1.2l-3.6.2c-1.8.1-2.8.9-2.8 2.2 0 1.3 1.1 2.1 2.7 2.1 2.1 0 3.7-1.5 3.7-3.3zm5 8.6v-2.3c.2 0 .7.1 1 .1 1.4 0 2.2-.6 2.7-2.1l.3-.9-5.2-14.4h3.1l3.7 11.9h.1l3.7-11.9h3L46 20.7c-1.2 3.3-2.5 4.4-5.4 4.4-.3 0-.9 0-1.2-.1h.4z" fill="currentColor"/></svg> },
-    { key: "googlepay", label: "Google Pay", svg: <svg width="42" height="16" viewBox="0 0 120 48" fill="none"><path d="M57.2 24.6V37h-3.2V12.8h8.5c2.1 0 3.9.7 5.4 2.1 1.5 1.4 2.3 3.1 2.3 5.1 0 2.1-.8 3.8-2.3 5.2-1.4 1.4-3.2 2-5.4 2h-5.3v-2.6zm0-9.2v6.5h5.4c1.2 0 2.3-.4 3.1-1.3.9-.9 1.3-1.9 1.3-3.1 0-1.1-.4-2.1-1.3-2.9-.8-.9-1.9-1.3-3.1-1.3h-5.4v.1z" fill="#4285F4"/><path d="M76.5 19.9c2.4 0 4.2.6 5.6 1.9 1.4 1.3 2.1 3.1 2.1 5.3V37h-3.1v-2.2h-.1c-1.3 1.8-3 2.7-5.2 2.7-1.8 0-3.4-.5-4.6-1.6-1.2-1.1-1.8-2.5-1.8-4.1 0-1.8.7-3.2 2-4.2 1.3-1 3.1-1.5 5.3-1.5 1.9 0 3.5.3 4.6 1v-.7c0-1.2-.5-2.3-1.4-3.1-1-.9-2.1-1.3-3.3-1.3-1.9 0-3.4.8-4.5 2.4l-2.8-1.8c1.6-2.3 3.9-3.5 7.1-3.5l.1-.2z" fill="#4285F4"/><path d="M39.5 24.5c0-1.2-.1-2.3-.3-3.4H20.3v6.4h10.8c-.5 2.5-1.9 4.6-4 6v5h6.5c3.8-3.5 5.9-8.6 5.9-14z" fill="#4285F4"/><path d="M20.3 42c5.4 0 9.9-1.8 13.2-4.8l-6.5-5c-1.8 1.2-4.1 1.9-6.8 1.9-5.2 0-9.6-3.5-11.2-8.2H2.3v5.2C5.7 37.8 12.5 42 20.3 42z" fill="#34A853"/><path d="M9.1 25.8c-.4-1.2-.6-2.5-.6-3.8 0-1.3.2-2.6.6-3.8v-5.2H2.3C.8 15.4 0 18.1 0 21s.8 5.6 2.3 8l6.8-5.2z" fill="#FBBC05"/><path d="M20.3 9c2.9 0 5.6 1 7.6 3l5.7-5.7C30.2 3 25.7.8 20.3.8 12.5.8 5.7 5 2.3 11.6l6.8 5.2c1.5-4.7 6-8.2 11.2-8.2v.4z" fill="#EA4335"/></svg> },
+    { key: "applepay", label: "Apple Pay", img: "/icons/ApplePay.png" },
+    { key: "googlepay", label: "Google Pay", img: "/icons/GooglePay.png" },
   ];
 
   return (
@@ -720,7 +720,7 @@ export default function CheckoutPage() {
                       transition: "all 0.15s",
                     }}
                   >
-                    {t.svg ? t.svg : t.label}
+                    {t.img ? <img src={t.img} alt={t.label} style={{ height: "20px", width: "auto", display: "block", margin: "0 auto" }} /> : t.label}
                   </button>
                 ))}
               </div>
