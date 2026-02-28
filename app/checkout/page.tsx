@@ -11,7 +11,6 @@ const C = {
   borderStrong: "rgba(255,255,255,0.14)",
   accent: "#635BFF",
   accentDim: "rgba(99,91,255,0.12)",
-  mobilepay: "#5A78FF",
   green: "#22C55E",
   text: "#FAFAFA",
   textSec: "rgba(250,250,250,0.6)",
@@ -19,7 +18,7 @@ const C = {
   red: "#EF4444",
 };
 
-type Tab = "kort" | "mobilepay" | "applepay" | "googlepay";
+type Tab = "kort" | "applepay" | "googlepay";
 
 // --- Luhn algorithm ---
 function luhn(num: string): boolean {
@@ -296,7 +295,7 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
         }}
       >
         {loading && <Spinner />}
-        {loading ? "Behandler betaling..." : "Betal 6.400 kr."}
+        {loading ? "Behandler betaling..." : "Betal 499,00 kr."}
       </button>
 
       {/* Demo note */}
@@ -355,7 +354,6 @@ function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
         }}
       >
         {/* MobilePay logo */}
-        <img src="/icons/MobilePay.png" alt="MobilePay" style={{ height: '64px', width: 'auto', marginBottom: '8px' }} />
         <div style={{ fontSize: "13px", color: "rgba(255,255,255,0.75)" }}>
           Betal med MobilePay
         </div>
@@ -536,15 +534,8 @@ export default function CheckoutPage() {
   function handleCardSuccess() {
     router.push("/success");
   }
-
-  function handleMobilePaySuccess() {
-    router.push("/success?method=mobilepay");
-  }
-
   const tabs: { key: Tab; label: string; icon?: string }[] = [
-    { key: "kort", label: "Kort" },
-    { key: "mobilepay", label: "MobilePay", icon: "/icons/MobilePay.png" },
-    { key: "applepay", label: "Apple Pay", icon: "/icons/ApplePay.png" },
+    { key: "kort", label: "Kort" },    { key: "applepay", label: "Apple Pay", icon: "/icons/ApplePay.png" },
     { key: "googlepay", label: "Google Pay", icon: "/icons/GooglePay.png" },
   ];
 
@@ -629,7 +620,7 @@ export default function CheckoutPage() {
               >
                 <div>
                   <div style={{ fontWeight: 600, fontSize: "15px" }}>
-                    Starter Webpakke
+                    Eksempel produkt
                   </div>
                   <div style={{ fontSize: "13px", color: C.textSec, marginTop: "2px" }}>
                     Sloth Studio
@@ -682,7 +673,7 @@ export default function CheckoutPage() {
                 }}
               >
                 <span>Total</span>
-                <span>6.400 kr.</span>
+                <span>499,00 kr.</span>
               </div>
 
               {/* Note */}
@@ -766,7 +757,6 @@ export default function CheckoutPage() {
 
               {/* Tab content */}
               {tab === "kort" && <KortForm onSuccess={handleCardSuccess} />}
-              {tab === "mobilepay" && <MobilePayForm onSuccess={handleMobilePaySuccess} />}
               {tab === "applepay" && <ApplePayTab />}
               {tab === "googlepay" && <GooglePayTab />}
             </div>
