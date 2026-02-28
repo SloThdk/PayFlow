@@ -26,7 +26,7 @@ const steps = [
   },
   {
     num: "02",
-    text: "Vi kontakter dig inden for 24 timer",
+    text: "We will contact you within 24 hours",
   },
   {
     num: "03",
@@ -68,8 +68,7 @@ function SuccessContent() {
     setOrderId(id);
   }, []);
 
-  const paymentLabel =
-    method === "mobilepay" ? "MobilePay" : "Betalingskort";
+  const paymentLabel = method === "applepay" ? "Apple Pay" : method === "googlepay" ? "Google Pay" : "Credit Card";
 
   return (
     <div
@@ -135,7 +134,7 @@ function SuccessContent() {
               color: C.text,
             }}
           >
-            Betaling gennemført!
+            Payment Successful!
           </h1>
 
           {/* Sub */}
@@ -147,7 +146,7 @@ function SuccessContent() {
               margin: "0 0 40px",
             }}
           >
-            Tak for din bestilling. Vi ser frem til at arbejde med dig.
+            Thank you for your order. This is a demo — no real payment was processed.
           </p>
 
           {/* Order summary card */}
@@ -169,7 +168,7 @@ function SuccessContent() {
               }}
             >
               <span style={{ fontSize: "13px", color: C.textMuted }}>
-                Ordrenummer
+                Order number
               </span>
               <span
                 style={{
@@ -217,7 +216,7 @@ function SuccessContent() {
                 fontSize: "14px",
               }}
             >
-              <span style={{ color: C.textSec }}>Betalingsmetode</span>
+              <span style={{ color: C.textSec }}>Payment method</span>
               <span>{paymentLabel}</span>
             </div>
           </div>
@@ -240,7 +239,7 @@ function SuccessContent() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Hvad sker der nu?
+              What happens next?
             </h2>
 
             <div style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
@@ -306,14 +305,14 @@ function SuccessContent() {
               ((e.target as HTMLElement).style.background = C.surface)
             }
           >
-            Tilbage til forsiden
+            Back to start
           </a>
         </div>
       </main>
 
       {/* Floating attribution */}
       <a
-        href="https://slothstudio.dk"
+        href="https://sloth-studio.pages.dev"
         target="_blank"
         rel="noopener noreferrer"
         style={{
@@ -332,7 +331,7 @@ function SuccessContent() {
           zIndex: 100,
         }}
       >
-        Bygget af Sloth Studio
+        Built by Sloth Studio
       </a>
 
       <style>{`

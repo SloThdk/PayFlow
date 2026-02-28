@@ -157,7 +157,7 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
     if (!name.trim()) errs.name = "Navn er påkrævet";
     const rawCard = cardNum.replace(/\s/g, "");
     if (rawCard.length < 13) errs.card = "Ugyldigt kortnummer";
-    else if (!luhn(rawCard)) errs.card = "Kortnummeret er ugyldigt";
+    else if (!luhn(rawCard)) errs.card = "Card numberet er ugyldigt";
 
     const [mm, yy] = expiry.split("/");
     if (!mm || !yy || mm.length < 2 || yy.length < 2) {
@@ -188,7 +188,7 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
     <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
       {/* Name */}
       <div>
-        <label style={labelStyle()}>Kortholders navn</label>
+        <label style={labelStyle()}>Cardholder name</label>
         <input
           style={inputStyle(!!errors.name)}
           type="text"
@@ -241,7 +241,7 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
       {/* Expiry + CVC */}
       <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "12px" }}>
         <div>
-          <label style={labelStyle()}>Udløbsdato</label>
+          <label style={labelStyle()}>Expiry date</label>
           <input
             style={inputStyle(!!errors.expiry)}
             type="text"
@@ -295,7 +295,7 @@ function KortForm({ onSuccess }: { onSuccess: () => void }) {
         }}
       >
         {loading && <Spinner />}
-        {loading ? "Behandler betaling..." : "Betal 499,00 kr."}
+        {loading ? "Behandler betaling..." : "Betal $186.25"}
       </button>
 
       {/* Demo note */}
@@ -449,38 +449,18 @@ function MobilePayForm({ onSuccess }: { onSuccess: () => void }) {
 // --- Apple Pay tab ---
 function ApplePayTab() {
   return (
-    <div style={{ textAlign: "center", padding: "16px 0" }}>
-      <div
-        style={{
-          opacity: 0.4,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "16px",
-        }}
-      >
-        <button
-          disabled
-          style={{
-            background: "#000",
-            color: "#fff",
-            border: "none",
-            borderRadius: "10px",
-            padding: "14px 32px",
-            fontSize: "15px",
-            fontWeight: 600,
-            cursor: "not-allowed",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            fontFamily: "inherit",
-          }}
-        >
+    <div style={{ textAlign: "center", padding: "24px 0" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
+        <button disabled style={{ background: "#000", color: "#fff", border: "none", borderRadius: "12px", padding: "16px 40px", fontSize: "15px", fontWeight: 600, cursor: "not-allowed", display: "flex", alignItems: "center", gap: "8px", fontFamily: "inherit", opacity: 0.85 }}>
           <img src="/icons/ApplePay.png" alt="Apple Pay" style={{ height: '28px', width: 'auto' }} />
         </button>
-        <p style={{ fontSize: "13px", color: C.textSec, margin: 0 }}>
-          Kun tilgængelig på Apple-enheder
-        </p>
+        <div style={{ background: "rgba(99,91,255,0.06)", border: "1px solid rgba(99,91,255,0.15)", borderRadius: "10px", padding: "14px 20px", maxWidth: "320px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", marginBottom: "6px" }}>
+            <span style={{ background: C.accentDim, color: C.accent, fontSize: "9px", fontWeight: 700, padding: "2px 8px", borderRadius: "100px", letterSpacing: "0.06em" }}>DEMO</span>
+            <span style={{ fontSize: "12px", fontWeight: 600, color: C.textSec }}>Available on iOS devices</span>
+          </div>
+          <p style={{ fontSize: "11px", color: C.textMuted, margin: 0, lineHeight: 1.5 }}>In production, Apple Pay triggers natively on iPhone, iPad, and Mac with Touch ID or Face ID.</p>
+        </div>
       </div>
     </div>
   );
@@ -489,38 +469,18 @@ function ApplePayTab() {
 // --- Google Pay tab ---
 function GooglePayTab() {
   return (
-    <div style={{ textAlign: "center", padding: "16px 0" }}>
-      <div
-        style={{
-          opacity: 0.5,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "16px",
-        }}
-      >
-        <button
-          disabled
-          style={{
-            background: "#fff",
-            color: "#3c4043",
-            border: "1px solid #dadce0",
-            borderRadius: "10px",
-            padding: "14px 32px",
-            fontSize: "15px",
-            fontWeight: 600,
-            cursor: "not-allowed",
-            display: "flex",
-            alignItems: "center",
-            gap: "8px",
-            fontFamily: "inherit",
-          }}
-        >
+    <div style={{ textAlign: "center", padding: "24px 0" }}>
+      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "16px" }}>
+        <button disabled style={{ background: "#fff", color: "#3c4043", border: "1px solid #dadce0", borderRadius: "12px", padding: "16px 40px", fontSize: "15px", fontWeight: 600, cursor: "not-allowed", display: "flex", alignItems: "center", gap: "8px", fontFamily: "inherit", opacity: 0.85 }}>
           <img src="/icons/GooglePay.png" alt="Google Pay" style={{ height: '28px', width: 'auto' }} />
         </button>
-        <p style={{ fontSize: "13px", color: C.textSec, margin: 0 }}>
-          Demo – ikke tilgængelig i dette miljø
-        </p>
+        <div style={{ background: "rgba(99,91,255,0.06)", border: "1px solid rgba(99,91,255,0.15)", borderRadius: "10px", padding: "14px 20px", maxWidth: "320px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "8px", justifyContent: "center", marginBottom: "6px" }}>
+            <span style={{ background: C.accentDim, color: C.accent, fontSize: "9px", fontWeight: 700, padding: "2px 8px", borderRadius: "100px", letterSpacing: "0.06em" }}>DEMO</span>
+            <span style={{ fontSize: "12px", fontWeight: 600, color: C.textSec }}>Available on Android devices</span>
+          </div>
+          <p style={{ fontSize: "11px", color: C.textMuted, margin: 0, lineHeight: 1.5 }}>In production, Google Pay launches on any Android phone or Chrome browser with saved payment methods.</p>
+        </div>
       </div>
     </div>
   );
@@ -535,7 +495,7 @@ export default function CheckoutPage() {
     router.push("/success");
   }
   const tabs: { key: Tab; label: string; icon?: string }[] = [
-    { key: "kort", label: "Kort" },    { key: "applepay", label: "Apple Pay", icon: "/icons/ApplePay.png" },
+    { key: "kort", label: "Card" },    { key: "applepay", label: "Apple Pay", icon: "/icons/ApplePay.png" },
     { key: "googlepay", label: "Google Pay", icon: "/icons/GooglePay.png" },
   ];
 
@@ -547,6 +507,14 @@ export default function CheckoutPage() {
       `}</style>
 
       <div style={{ minHeight: "100vh", background: C.bg }}>
+        {/* Demo banner */}
+        <div style={{ background: "rgba(99,91,255,0.06)", borderBottom: "1px solid rgba(99,91,255,0.15)", padding: "14px 24px", textAlign: "center" }}>
+          <div style={{ display: "inline-flex", alignItems: "center", gap: "10px", flexWrap: "wrap", justifyContent: "center" }}>
+            <span style={{ background: C.accentDim, color: C.accent, fontSize: "9px", fontWeight: 700, padding: "3px 10px", borderRadius: "100px", letterSpacing: "0.06em" }}>DEMO</span>
+            <span style={{ fontSize: "12px", color: C.textSec, lineHeight: 1.5 }}>This is a live demo of a custom payment flow. Every element — colors, typography, layout, and branding — is built from scratch to match your exact brand identity. No templates. No limitations.</span>
+          </div>
+        </div>
+
         {/* Header */}
         <header
           style={{
@@ -598,7 +566,7 @@ export default function CheckoutPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Din ordre
+              Your Order
             </h2>
 
             <div
@@ -620,13 +588,13 @@ export default function CheckoutPage() {
               >
                 <div>
                   <div style={{ fontWeight: 600, fontSize: "15px" }}>
-                    Eksempel produkt
+                    Example Product
                   </div>
                   <div style={{ fontSize: "13px", color: C.textSec, marginTop: "2px" }}>
-                    Sloth Studio
+                    Your Brand
                   </div>
                 </div>
-                <div style={{ fontWeight: 600, fontSize: "15px" }}>5.120 kr.</div>
+                <div style={{ fontWeight: 600, fontSize: "15px" }}>$149.00</div>
               </div>
 
               {/* Divider */}
@@ -643,7 +611,7 @@ export default function CheckoutPage() {
                 }}
               >
                 <span>Subtotal</span>
-                <span>5.120 kr.</span>
+                <span>$149.00</span>
               </div>
 
               {/* Moms */}
@@ -656,8 +624,8 @@ export default function CheckoutPage() {
                   marginBottom: "16px",
                 }}
               >
-                <span>Moms (25%)</span>
-                <span>1.280 kr.</span>
+                <span>Tax (25%)</span>
+                <span>$37.25</span>
               </div>
 
               {/* Divider */}
@@ -673,7 +641,7 @@ export default function CheckoutPage() {
                 }}
               >
                 <span>Total</span>
-                <span>499,00 kr.</span>
+                <span>$186.25</span>
               </div>
 
               {/* Note */}
@@ -687,7 +655,7 @@ export default function CheckoutPage() {
                   gap: "5px",
                 }}
               >
-                Du betaler kun en gang – ingen abonnement
+                One-time payment — no subscriptions
               </div>
             </div>
           </div>
@@ -702,7 +670,7 @@ export default function CheckoutPage() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Betalingsmetode
+              Payment Method
             </h2>
 
             <div
@@ -774,7 +742,7 @@ export default function CheckoutPage() {
 
         {/* Floating attribution */}
         <a
-          href="https://slothstudio.dk"
+          href="https://sloth-studio.pages.dev"
           target="_blank"
           rel="noopener noreferrer"
           style={{
@@ -793,7 +761,7 @@ export default function CheckoutPage() {
             zIndex: 100,
           }}
         >
-          Bygget af Sloth Studio
+          Built by Sloth Studio
         </a>
       </div>
     </>
