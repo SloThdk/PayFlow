@@ -504,6 +504,9 @@ export default function CheckoutPage() {
     <>
       <style>{`
         @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes gradientShift { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes gradientText { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
+        @keyframes float { from { transform: translateY(0px); } to { transform: translateY(-6px); } }
         * { box-sizing: border-box; }
       `}</style>
 
@@ -741,19 +744,21 @@ export default function CheckoutPage() {
 
         {/* Your Design callout */}
         <div style={{ maxWidth: "960px", margin: "0 auto", padding: "0 24px 80px", textAlign: "center" }}>
-          <div style={{ borderTop: `1px solid ${C.border}`, paddingTop: "56px" }}>
-            <div style={{ position: "relative", display: "inline-block", marginBottom: "16px" }}>
-              <h2 style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 800, letterSpacing: "-0.04em", background: "linear-gradient(135deg, #635BFF 0%, #E040FB 35%, #FF6D00 65%, #00E676 100%)", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: 1.1 }}>Your Design</h2>
+          <div style={{ position: "relative", borderTop: `1px solid ${C.border}`, paddingTop: "56px", overflow: "hidden" }}>
+            {/* Animated gradient background */}
+            <div style={{ position: "absolute", inset: "-40px -60px", background: "linear-gradient(135deg, rgba(99,91,255,0.08), rgba(224,64,251,0.06), rgba(255,109,0,0.06), rgba(0,230,118,0.06), rgba(0,176,255,0.06))", backgroundSize: "400% 400%", animation: "gradientShift 8s ease infinite", borderRadius: "24px", filter: "blur(40px)", pointerEvents: "none" }} />
+            <div style={{ position: "relative" }}>
+              <h2 style={{ fontSize: "clamp(36px, 6vw, 60px)", fontWeight: 800, letterSpacing: "-0.04em", background: "linear-gradient(135deg, #635BFF 0%, #E040FB 25%, #FF6D00 50%, #00E676 75%, #00B0FF 100%)", backgroundSize: "200% 200%", animation: "gradientText 6s ease infinite", WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text", lineHeight: 1.1, marginBottom: "20px" }}>Your Design</h2>
+              <p style={{ fontSize: "16px", color: C.textSec, maxWidth: "520px", margin: "0 auto 32px", lineHeight: 1.7 }}>
+                Every color, font, layout, and interaction is built from scratch to match your exact brand identity.
+              </p>
+              <div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap", marginBottom: "20px" }}>
+                {["#635BFF", "#E040FB", "#FF6D00", "#00E676", "#00B0FF", "#FFD600"].map((c, i) => (
+                  <div key={c} style={{ width: "44px", height: "44px", borderRadius: "50%", background: c, border: "2px solid rgba(255,255,255,0.12)", boxShadow: `0 6px 24px ${c}55`, animation: `float ${2 + i * 0.3}s ease-in-out infinite alternate` }} />
+                ))}
+              </div>
+              <p style={{ fontSize: "13px", color: C.textMuted }}>No templates. No platform limitations. Just your brand.</p>
             </div>
-            <p style={{ fontSize: "16px", color: C.textSec, maxWidth: "520px", margin: "0 auto 28px", lineHeight: 1.7 }}>
-              This is a demo of how a payment flow looks when built from scratch. Every color, font, layout, and interaction is fully customizable to match your brand identity.
-            </p>
-            <div style={{ display: "flex", justifyContent: "center", gap: "8px", flexWrap: "wrap" }}>
-              {["#635BFF", "#E040FB", "#FF6D00", "#00E676", "#00B0FF", "#FFD600"].map(c => (
-                <div key={c} style={{ width: "40px", height: "40px", borderRadius: "50%", background: c, border: "2px solid rgba(255,255,255,0.1)", boxShadow: `0 4px 16px ${c}44` }} />
-              ))}
-            </div>
-            <p style={{ fontSize: "13px", color: C.textMuted, marginTop: "16px" }}>No templates. No platform limitations. Just your brand.</p>
           </div>
         </div>
 
